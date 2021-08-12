@@ -80,7 +80,12 @@ class ApplicationController extends Controller
     }
     public function destroy(Request $request, Application $application) {
         $id = $request->delete_id;
+        $data = Application::find($id);
         $application->find($id)->delete();
+        Education::where('application_id', $data->application_id)->delete();
+        Marriage::where('application_id', $data->application_id)->delete();
+        Treatment::where('application_id', $data->application_id)->delete();
+        House::where('application_id', $data->application_id)->delete();
         return redirect()->route('application.view')->with('delete', 'Applicant deleted successfully.');
     }
     public function index() {
@@ -97,7 +102,7 @@ class ApplicationController extends Controller
             'file' => 'required',
         ]); 
         $filename = $request->file('file')->getClientOriginalName();
-        $request->file('file')->move(public_path('slides'), $filename);  
+        $request->file('file')->move(storage_path('app/public/slides'), $filename);  
 
         $data=new Slide();
         $data->title=$request->title;
