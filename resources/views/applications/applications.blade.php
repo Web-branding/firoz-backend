@@ -28,7 +28,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-9">
-                    <form action="" class="form-inline mb-3 mr-auto w-100 navbar-search">
+                    <form action="{{route('search.id')}}" class="form-inline mb-3 mr-auto w-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small"
                                 placeholder="Application Id..." aria-label="Search" name="id"
@@ -45,7 +45,7 @@
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-4 col-form-label">Sort By</label>
                         <div class="col-sm-6">
-                            <form method="post" action="">
+                            <form method="post" action="{{route('sort.view')}}">
                                 @csrf
                                 <select id="inputState" name="status" class="form-select " onchange="this.form.submit()">
                                     <option selected>Choose...</option>

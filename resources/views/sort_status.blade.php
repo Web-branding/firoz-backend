@@ -1,12 +1,6 @@
 @extends('layouts.base')
 @section('content')
 <div class="container-fluid">
-    <a href="{{route('add.applicant')}}" class="btn btn-primary btn-icon-split mb-3">
-        <span class="icon text-white-50">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-        </span>
-        <span class="text">Add New Applicant</span>
-    </a>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Application List</h6>
@@ -63,6 +57,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if(!$applications->isEmpty())
                         @foreach($applications as $app)
                             <tr>
                                 <td>{{$app->application_id}}</td>
@@ -80,13 +75,13 @@
                                 </td>
                                 <td>{{$app->priority}}</td>
                                 <td>
-                                    <a href="{{route('applicant.edit',$app->id)}}" class="btn btn-success btn-sm btn-icon-split">
+                                    <a href="{{route('application.edit',$app->id)}}" class="btn btn-success btn-sm btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                         </span> 
                                         <span class="text">Edit</span>
                                     </a>
-                                    <a href="{{route('applicant.show',$app->id)}}" class="btn btn-info btn-sm btn-icon-split">
+                                    <a href="{{route('application.show',$app->id)}}" class="btn btn-info btn-sm btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fa fa-info" aria-hidden="true"></i>
                                         </span>
@@ -101,13 +96,21 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @else
+                            <tr>
+                                <td colspan="7">No results found!</td>
+                            <tr>
+                        @endif 
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    {!! $applications->appends(\Request::except('page'))->render() !!}
+                </div>
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
-                                <form action="{{ route('applicant.destroy') }}" method="POST">
+                                <form action="{{ route('application.destroy') }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" id="delete_id" name="delete_id">
