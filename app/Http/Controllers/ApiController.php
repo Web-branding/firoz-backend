@@ -200,36 +200,38 @@ class ApiController extends Controller
     }
 
     public function search($id) {
+        $app = Application::where('application_id', $id)->get();
         $ed_id = Education::where('application_id', $id)->get();
         $m_id = Marriage::where('application_id', $id)->get();
         $trt_id = Treatment::where('application_id', $id)->get();
-        $oth_id = Other::where('application_id', $id)->get();
-        // return response()->json([
-        //     'status' => 404,
-        //     'message' => $oth_id
-        // ]);
+        $ho_id = House::where('application_id', $id)->get();
+
         if(!$ed_id->isEmpty()) {
             return response()->json([
                 'status' => 200,
+                'data' => $app,
                 'result' => $ed_id
             ]);
         }
         else if(!$m_id->isEmpty()) {
             return response()->json([
                 'status' => 200,
+                'data' => $app,
                 'result' => $m_id
             ]);
         }
         else if(!$trt_id->isEmpty()) {
             return response()->json([
                 'status' => 200,
+                'data' => $app,
                 'result' => $trt_id
             ]);
         }
-        else if(!$oth_id->isEmpty()) {
+        else if(!$ho_id->isEmpty()) {
             return response()->json([
                 'status' => 200,
-                'result' => $oth_id
+                'data' => $app,
+                'result' => $ho_id
             ]);
         }
         // return response()->json(['message' => 'Applicant Not Found', 404]);
