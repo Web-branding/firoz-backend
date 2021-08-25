@@ -63,7 +63,7 @@ class ApplicationController extends Controller
     }
      public function download(Request $request,$file)
     {
-        return response()->download(storage_path('app/public/files/'.$file));
+        return response()->download(public_path('files/'.$file));
     }
     public function accept(Request $request) {
         $accept_id = $request->id;
@@ -102,7 +102,7 @@ class ApplicationController extends Controller
             'file' => 'required',
         ]); 
         $filename = $request->file('file')->getClientOriginalName();
-        $request->file('file')->move(storage_path('app/public/slides'), $filename);  
+        $request->file('file')->move(public_path('slides'), $filename);  
 
         $data=new Slide();
         $data->title=$request->title;
