@@ -281,25 +281,6 @@ class ApiController extends Controller
 
 
         
-        // foreach($data as $file)
-        // {
-        //     $files[] = $file->file; 
-            
-        // }
-        // foreach($files as $file)
-        // {
-        //     $val = explode(",", $file); 
-        //     $values[] = str_replace (array('[','"', ']'), '' , $val);    
-        // }
-        // foreach($values as $val)
-        // {
-        //     foreach($val as $va)
-        //     {   
-        //     $value[] = asset('files/' . $va); 
-        //     }
-        // }
-
-
         foreach($data as $file)
         {
             $files[] = $file->file; 
@@ -310,13 +291,31 @@ class ApiController extends Controller
             $val = explode(",", $file); 
             $values[] = str_replace (array('[','"', ']'), '' , $val);    
         }
-        $path = asset('files/').'/';
+        foreach($values as $val)
+        {
+            foreach($val as $va)
+            {   
+            $value[] = asset('files/' . $va); 
+            }
+        }
+
+
+        // foreach($data as $file)
+        // {
+        //     $files[] = $file->file; 
+            
+        // }
+        // foreach($files as $file)
+        // {
+        //     $val = explode(",", $file); 
+        //     $values[] = str_replace (array('[','"', ']'), '' , $val);    
+        // }
+        // $path = asset('files/').'/';
 
         return response()->json([
             'data' =>$data,
             'videos' => $video,
-            'path' => $path,
-            'files' => $values,
+            'files' => $value,
             'status' => 200,
         ]);
     }
