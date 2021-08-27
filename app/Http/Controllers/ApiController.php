@@ -255,7 +255,7 @@ class ApiController extends Controller
 
         foreach($slides as $slide)
         {
-            $image[] = asset('slides/' . $slide->file);   
+            $image[] = asset('public/slides/' . $slide->file);   
         }
         
         return response()->json([
