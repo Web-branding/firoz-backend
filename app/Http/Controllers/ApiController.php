@@ -247,7 +247,7 @@ class ApiController extends Controller
 
         foreach($slides as $slide)
         {
-            $image[] = asset('slides/' . $slide->file);   
+            $image[] = asset('public/slides/' . $slide->file);   
         }
         
         return response()->json([
@@ -263,7 +263,7 @@ class ApiController extends Controller
       
         foreach($data as $vd)
         {
-            $video[] = asset('videos/' . $vd->video);   
+            $video[] = asset('public/videos/' . $vd->video);   
         }
 
 
@@ -295,7 +295,7 @@ class ApiController extends Controller
         {
             foreach($val as $va)
             {   
-            $value[] = asset('files/' . $va); 
+            $value[] = asset('public/files/' . $va); 
             }
         }
 
