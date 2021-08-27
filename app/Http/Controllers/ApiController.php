@@ -12,6 +12,7 @@ use App\Models\Treatment;
 use App\Models\House;
 use App\Models\Other;
 use App\Models\Slide;
+use App\Models\Video;
 
 class ApiController extends Controller
 {
@@ -243,24 +244,79 @@ class ApiController extends Controller
 
     public function slide() {
         $slides = Slide::get()->all();
-        // foreach($slides as $slide)
-        // {
-        //     return response()->json([
-        //         'title' => $slide->title,
-        //         'description' => $slide->description,
-        //         'image' => asset('slides/' . $slide->file),
-        //         'status' => 200
-        //     ]);
-        // }
 
         foreach($slides as $slide)
         {
-            $image[] = asset('public/slides/' . $slide->file);   
+            $image[] = asset('slides/' . $slide->file);   
         }
         
         return response()->json([
-            $slides,
+            'slides' => $slides,
             'image' => $image,
+            'status' => 200,
+        ]);
+    }
+
+    public function videos()
+    {
+        $data = Video::get()->all();
+      
+        foreach($data as $vd)
+        {
+            $video[] = asset('videos/' . $vd->video);   
+        }
+
+
+        // foreach($data as $file)
+        // {
+        //     $files[] = asset('files/' . $file->file); 
+            
+        // }
+        // foreach($files as $file)
+        // {
+        //     // $value = json_decode($file);
+        //     $value = explode(",", $file); 
+        //     $values[] = str_replace (array('[','"', ']'), '' , $value);    
+        // }
+
+
+        
+        // foreach($data as $file)
+        // {
+        //     $files[] = $file->file; 
+            
+        // }
+        // foreach($files as $file)
+        // {
+        //     $val = explode(",", $file); 
+        //     $values[] = str_replace (array('[','"', ']'), '' , $val);    
+        // }
+        // foreach($values as $val)
+        // {
+        //     foreach($val as $va)
+        //     {   
+        //     $value[] = asset('files/' . $va); 
+        //     }
+        // }
+
+
+        foreach($data as $file)
+        {
+            $files[] = $file->file; 
+            
+        }
+        foreach($files as $file)
+        {
+            $val = explode(",", $file); 
+            $values[] = str_replace (array('[','"', ']'), '' , $val);    
+        }
+        $path = asset('files/').'/';
+
+        return response()->json([
+            'data' =>$data,
+            'videos' => $video,
+            'path' => $path,
+            'files' => $values,
             'status' => 200,
         ]);
     }

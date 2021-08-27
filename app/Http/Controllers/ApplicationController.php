@@ -9,6 +9,7 @@ use App\Models\Marriage;
 use App\Models\Treatment;
 use App\Models\House;
 use App\Models\Slide;
+use App\Models\Video;
 use ZipArchive;
 use Illuminate\Support\Facades\FILE;
 
@@ -139,5 +140,52 @@ class ApplicationController extends Controller
             $applications =  Application::where('priority', $status)->latest()->paginate(10);
         }
         return view('sort_status', compact('applications'));   
+    }
+    public function videolist() {
+        $video = Video::get()->all();
+        return view('video.video', compact('video'));
+    }
+    public function video() {
+        return view('video.add_video');
+    }
+    public function add_video(Request $request) {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'video' => 'required|mimes:mp4',
+            'file' => 'required',
+            'file.*' => 'required|mimes:pdf,xlx,csv',  
+        ]);
+
+        if($request->hasfile('file'))
+        {
+           foreach($request->file('file') as $file)
+           {
+               $name = $file->getClientOriginalName();
+               $file->move(public_path('files'), $name);  
+               $files[] = $name;  
+           }
+        }
+        
+        $filename = $request->file('video')->getClientOriginalName();
+        $request->file('video')->move(public_path('videos'), $filename);  
+
+        $data=new Video();
+        $data->title=$request->title;
+        $data->description=$request->description;
+        $data->video=$filename;
+        $data->file=$files;
+        $data->save();
+        return redirect()->route('video.view')->with('add', 'Video added successfully!');     
+    }
+    public function destroy_video(Request $request, Video $video) {
+        $id = $request->delete_id;
+        $video->find($id)->delete();
+        return redirect()->route('video.view')->with('delete', 'Video deleted successfully.');
+    }
+    public function display($id)
+    {
+        $data = $id;
+        return view('video.view_file',compact('data'));
     }
 }

@@ -555,6 +555,7 @@ class ComposerStaticInit366568084aa9a5b966631a849033385d
         'App\\Models\\Slide' => __DIR__ . '/../..' . '/app/Models/Slide.php',
         'App\\Models\\Treatment' => __DIR__ . '/../..' . '/app/Models/Treatment.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\Video' => __DIR__ . '/../..' . '/app/Models/Video.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

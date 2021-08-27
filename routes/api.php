@@ -28,3 +28,4 @@ Route::post('other', [ApiController::class, 'other']);
 Route::get('search/{id}', [ApiController::class, 'search']);
 
 Route::get('slides', [ApiController::class,'slide']);
+Route::get('videos', [ApiController::class,'videos']);

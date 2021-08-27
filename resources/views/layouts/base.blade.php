@@ -43,34 +43,16 @@
                     <span>Applications</span>
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="{{ Request::path()==='education-list' ? 'active nav-link text-dark' : 'nav-link' }}" href="{{url('education-list')}}">
-                <i class="{{ Request::path()==='education-list' ? 'fa fa-list text-dark' : 'fa fa-list' }}" aria-hidden="true"></i>
-                    <span>Education Applications</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="{{ Request::path()==='marriage-list' ? 'active nav-link text-dark' : 'nav-link' }}" href="{{url('marriage-list')}}">
-                    <i class="{{ Request::path()==='marriage-list' ? 'fa fa-list text-dark' : 'fa fa-list' }}" aria-hidden="true"></i>
-                    <span>Marriage Applications</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="{{ Request::path()==='treatment-list' ? 'active nav-link text-dark' : 'nav-link' }}" href="{{url('treatment-list')}}">
-                    <i class="{{ Request::path()==='treatment-list' ? 'fa fa-list text-dark' : 'fa fa-list' }}" aria-hidden="true"></i>
-                    <span>Treatment Applications</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="{{ Request::path()==='other-list' ? 'active nav-link text-dark' : 'nav-link' }}" href="{{url('other-list')}}">
-                    <i class="{{ Request::path()==='other-list' ? 'fa fa-list text-dark' : 'fa fa-list' }}" aria-hidden="true"></i>
-                    <span>Other Applications</span>
-                </a>
-            </li> -->
             <li class="nav-item">
                 <a class="{{ Request::path()==='slide-list' ? 'active nav-link text-dark' : 'nav-link' }}" href="{{url('slide-list')}}">
                     <i class="{{ Request::path()==='slide-list' ? 'fa fa-list text-dark' : 'fa fa-list' }}" aria-hidden="true"></i>
                     <span>Slides</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="{{ Request::path()==='video-list' ? 'active nav-link text-dark' : 'nav-link' }}" href="{{url('video-list')}}">
+                    <i class="{{ Request::path()==='video-list' ? 'fa fa-list text-dark' : 'fa fa-list' }}" aria-hidden="true"></i>
+                    <span>Videos</span>
                 </a>
             </li>
         </ul>

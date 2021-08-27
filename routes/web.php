@@ -45,3 +45,9 @@ Route::get('slide-list', [ApplicationController::class, 'index'])->name('slides.
 Route::get('slide', [ApplicationController::class, 'slide'])->name('add.slide');
 Route::post('slide', [ApplicationController::class, 'add_slide'])->name('slide.add');
 Route::delete('delete-slide', [ApplicationController::class, 'destroy_slide'])->name('slide.destroy');
+
+Route::get('video-list', [ApplicationController::class, 'videolist'])->name('video.view');
+Route::get('video', [ApplicationController::class, 'video'])->name('add.video');
+Route::post('video', [ApplicationController::class, 'add_video'])->name('video.add');
+Route::delete('delete-video', [ApplicationController::class, 'destroy_video'])->name('video.destroy');
+Route::get('display&{id}',[ApplicationController::class,'display'])->name('file.display');
