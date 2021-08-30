@@ -10,7 +10,7 @@
             @csrf 
             <input type="hidden" name="id" value="{{$data->id}}">
             <div class="col-12">
-                <img src="{{asset('public/images')}}/{{$data->image}}" width="200px" height="200px" alt="Image">
+                <img src="{{asset('images')}}/{{$data->image}}" width="200px" height="200px" alt="Image">
             </div>
             <div class="col-md-4">
                 <label for="inputAddress" class="form-label">Application Id</label>

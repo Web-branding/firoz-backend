@@ -20,11 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('application', [ApiController::class, 'application']);
-Route::post('education', [ApiController::class, 'education']);
-Route::post('marriage', [ApiController::class, 'marriage']);
-Route::post('treatment', [ApiController::class, 'treatment']);
-Route::post('house', [ApiController::class, 'house']);
-Route::post('other', [ApiController::class, 'other']);
 Route::get('search/{id}', [ApiController::class, 'search']);
 
 Route::get('slides', [ApiController::class,'slide']);
