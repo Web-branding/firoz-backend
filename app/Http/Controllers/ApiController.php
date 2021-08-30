@@ -16,64 +16,6 @@ use App\Models\Video;
 
 class ApiController extends Controller
 {
-
-    // public function application(Request $request)
-    // {
-    //     $request->validate([
-    //         'fname' => 'required',
-    //         'lname' => 'required',
-    //         'place' => 'required',
-    //         'address' => 'required',
-    //         'phone' => 'required',
-    //         'aadhar' => 'required',
-    //         'ration' => 'required',
-    //         'amount' => 'required',
-    //         'priority' => 'required',
-    //         'image' => 'required|image|mimes:jpeg,png,jpg',
-    //         'file' => 'required|mimes:pdf,xlx,csv',
-    //         'category' => 'required',
-    //     ]); 
-
-    //     $image = $request->file('image');
-    //     $imagename = $image->getClientOriginalName();
-    //     $image->move(public_path('images'), $imagename); 
-
-    //     $file = $request->file('file');
-    //     $filename=$file->getClientOriginalName();
-    //     $file->move(public_path('files'), $filename);  
-        
-    //     $application_id = Helper::IDGenerator(new Application, 'application_id', 5, 'ID');
- 
-    //     $data=new Application();
-    //     $data->application_id=$application_id;
-    //     $data->fname=$request->fname;
-    //     $data->lname=$request->lname;
-    //     $data->place=$request->place;
-    //     $data->address=$request->address;
-    //     $data->phone=$request->phone;
-    //     $data->aadhar=$request->aadhar;
-    //     $data->ration=$request->ration;
-    //     $data->amount=$request->amount;
-    //     $data->priority=$request->priority;
-    //     $data->image=$imagename;
-    //     $data->file = $filename;
-    //     $data->category=$request->category;
-    //     $results = $data->save();
-    //     if($results) {
-    //         return response()->json([
-    //             'status' => 200,
-    //             'message' => "Data has been saved",
-    //             'id' => $application_id
-    //         ]);
-    //     }
-    //     else {
-    //         return response()->json([
-    //             'status' => 400,
-    //             'error' => 'Please fill all the mandatory fields',
-    //         ]);
-    //     }   
-    // }
-
     public function application(Request $request)
     {
         $request->validate([
