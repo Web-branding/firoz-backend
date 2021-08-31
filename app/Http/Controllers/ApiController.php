@@ -203,7 +203,8 @@ class ApiController extends Controller
         }
     }
 
-    public function search($id) {
+    public function search(Request $request) {
+        $id = $request->application_id;
         $app = Application::where('application_id', $id)->get();
         $ed_id = Education::where('application_id', $id)->get();
         $m_id = Marriage::where('application_id', $id)->get();

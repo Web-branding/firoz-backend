@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('application', [ApiController::class, 'application']);
-Route::get('search/{id}', [ApiController::class, 'search']);
+// Route::get('search/{id}', [ApiController::class, 'search']);
+Route::post('search', [ApiController::class, 'search']);
 
 Route::get('slides', [ApiController::class,'slide']);
 Route::get('videos', [ApiController::class,'videos']);
