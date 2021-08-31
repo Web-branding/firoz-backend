@@ -188,4 +188,10 @@ class ApplicationController extends Controller
         $data = $id;
         return view('video.view_file',compact('data'));
     }
+
+    public function searchs_id($id) {
+        $application_id = $id;
+        $data =  Application::where('application_id', $application_id)->get();
+        return view('search', compact('data'));
+    }
 }

@@ -63,6 +63,29 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow" onclick="markNotificationAsRead('{{ count(auth()->user()->unreadNotifications) }}')">
+                            <a class="nav-link dropdown-toggle" id="alertsDropdown" role="button"
+                             data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                                <span class="badge badge-danger badge-counter">{{ count(auth()->user()->unreadNotifications) }}</span>
+                            </a>
+                            <div class="dropdown-menu ms-auto shadow animated--grow-in dropdown-list dropdown-menu-right" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>                                                  
+                                @forelse(auth()->user()->unreadNotifications as $notification)
+                                <div class="container mt-3 mb-3">
+                                    <a href="{{route('searchs.appid', $notification->data['id'])}}" style="text-decoration:none;color:#000;">
+                                        <strong>{{$notification->data['fname']}} {{$notification->data['lname']}}</strong>
+                                        applied to category <strong>{{$notification->data['category']}}</strong>
+                                    </a>
+                                </div>
+                                @empty
+                                <a class="dropdown-item text-center small text-gray-500" href="#">No Unread Notifications</a>
+                                @endforelse
+                            </div>
+                        </li>
+
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" id="userDropdown" role="button"
                              data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">   
@@ -119,6 +142,13 @@
         setTimeout(function()  {
             $('.loader_bg').fadeOut(500);
         }, 1000);
+    </script>
+    <script>
+        function markNotificationAsRead(notificationCount) {
+            if(notificationCount !=='0'){
+                $.get('/markAsRead');
+            }
+        }
     </script>
     </body>
 </html>

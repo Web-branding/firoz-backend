@@ -51,3 +51,9 @@ Route::get('video', [ApplicationController::class, 'video'])->name('add.video');
 Route::post('video', [ApplicationController::class, 'add_video'])->name('video.add');
 Route::delete('delete-video', [ApplicationController::class, 'destroy_video'])->name('video.destroy');
 Route::get('display&{id}',[ApplicationController::class,'display'])->name('file.display');
+
+Route::get('searchs&{id}', [ApplicationController::class, 'searchs_id'])->name('searchs.appid');
+
+Route::get('/markAsRead',function(){
+    auth()->user()->unreadNotifications->markAsRead();
+});

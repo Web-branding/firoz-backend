@@ -13,6 +13,7 @@ use App\Models\House;
 use App\Models\Other;
 use App\Models\Slide;
 use App\Models\Video;
+use App\Notifications\NewApplication;
 
 class ApiController extends Controller
 {
@@ -58,6 +59,16 @@ class ApiController extends Controller
         $data->file = $filename;
         $data->category=$request->category;
         $results = $data->save();
+
+        $user = \App\Models\User::find(1);
+        $details = [
+            'id' => $application_id,
+            'category' => $request->category,
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+        ];
+        $user->notify(new NewApplication($details));
+
         if(!$results) {
             return response()->json([
                 'status' => 400,
