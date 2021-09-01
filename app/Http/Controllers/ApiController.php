@@ -249,15 +249,14 @@ class ApiController extends Controller
     public function slide() {
         $slides = Slide::get()->all();
 
-        foreach($slides as $slide)
-        {
-            $image[] = asset('public/slides/' . $slide->file);   
-        }
+        // foreach($slides as $slide)
+        // {
+        //     $image[] = asset('public/slides/' . $slide->file);   
+        // }
         
         return response()->json([
-            'slides' => $slides,
-            'image' => $image,
             'status' => 200,
+            'data' => $slides,
         ]);
     }
 

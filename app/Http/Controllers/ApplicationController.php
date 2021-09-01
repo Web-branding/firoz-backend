@@ -109,6 +109,7 @@ class ApplicationController extends Controller
         $data->title=$request->title;
         $data->description=$request->description;
         $data->file=$filename;
+        $data->path=asset('public/slides/' . $filename);
         $data->save();
         return redirect()->route('slides.view')->with('add', 'Slide added successfully!');     
     }

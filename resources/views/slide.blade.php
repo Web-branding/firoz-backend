@@ -37,7 +37,7 @@
                             <tr>
                                 <td>{{$slide->title}}</td>
                                 <td>{{$slide->description}}</td>
-                                <td><img src="{{asset('public/slides')}}/{{$slide->file}}" width="80px" height="80px" alt="Image"></td>
+                                <td><img src="{{asset('slides')}}/{{$slide->file}}" width="80px" height="80px" alt="Image"></td>
                                 <td>
                                     <button type="button" class="btn btn-danger btn-sm btn-icon-split deletebtn" value="{{$slide->id}}" >
                                         <span class="icon text-white-50">
