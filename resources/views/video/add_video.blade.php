@@ -29,6 +29,7 @@
                             <input type="file" name="file[]" class="myfrm form-control " id="exampleInputEmail"> 
                             <button class="btn bg-gradient-success text-white border-0 add-file" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
                         </div>
+                        <!-- <div id="emailHelp" class="form-text">Upload documents in pdf</div> -->
                     </div>
                     <div class="form-group clone d-none">
                         <div class="remove control-group lst input-group" style="margin-top:10px;margin-bottom:10px">

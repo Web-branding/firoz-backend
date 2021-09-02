@@ -149,6 +149,37 @@ class ApplicationController extends Controller
     public function video() {
         return view('video.add_video');
     }
+    // public function add_video(Request $request) {
+    //     $request->validate([
+    //         'title' => 'required',
+    //         'description' => 'required',
+    //         'video' => 'required|mimes:mp4',
+    //         'file' => 'required',
+    //         'file.*' => 'required|mimes:pdf,xlx,csv',  
+    //     ]);
+
+    //     if($request->hasfile('file'))
+    //     {
+    //        foreach($request->file('file') as $file)
+    //        {
+    //            $name = $file->getClientOriginalName();
+    //            $file->move(public_path('files'), $name);  
+    //            $files[] = $name;  
+    //        }
+    //     }
+        
+    //     $filename = $request->file('video')->getClientOriginalName();
+    //     $request->file('video')->move(public_path('videos'), $filename);  
+
+    //     $data=new Video();
+    //     $data->title=$request->title;
+    //     $data->description=$request->description;
+    //     $data->video=$filename;
+    //     $data->file=$files;
+    //     $data->save();
+    //     return redirect()->route('video.view')->with('add', 'Video added successfully!');     
+    // }
+
     public function add_video(Request $request) {
         $request->validate([
             'title' => 'required',
@@ -165,6 +196,7 @@ class ApplicationController extends Controller
                $name = $file->getClientOriginalName();
                $file->move(public_path('files'), $name);  
                $files[] = $name;  
+               $files_path[] = asset('files/' . $name);
            }
         }
         
@@ -176,9 +208,13 @@ class ApplicationController extends Controller
         $data->description=$request->description;
         $data->video=$filename;
         $data->file=$files;
+        $data->video_path=asset('videos/' . $filename);
+        // $data->file_path=json_encode($files_path);
+        $data->file_path=implode(',',$files_path);
         $data->save();
         return redirect()->route('video.view')->with('add', 'Video added successfully!');     
     }
+
     public function destroy_video(Request $request, Video $video) {
         $id = $request->delete_id;
         $video->find($id)->delete();

@@ -299,63 +299,17 @@ class ApiController extends Controller
     public function videos()
     {
         $data = Video::get()->all();
-      
-        foreach($data as $vd)
-        {
-            $video[] = asset('public/videos/' . $vd->video);   
-        }
-
-
-        // foreach($data as $file)
-        // {
-        //     $files[] = asset('files/' . $file->file); 
-            
-        // }
-        // foreach($files as $file)
-        // {
-        //     // $value = json_decode($file);
-        //     $value = explode(",", $file); 
-        //     $values[] = str_replace (array('[','"', ']'), '' , $value);    
-        // }
-
-
-        
+    
         foreach($data as $file)
         {
-            $files[] = $file->file; 
-            
+            $values[] = explode(',', $file->file_path);
         }
-        foreach($files as $file)
-        {
-            $val = explode(",", $file); 
-            $values[] = str_replace (array('[','"', ']'), '' , $val);    
-        }
-        foreach($values as $val)
-        {
-            foreach($val as $va)
-            {   
-            $value[] = asset('public/files/' . $va); 
-            }
-        }
-
-
-        // foreach($data as $file)
-        // {
-        //     $files[] = $file->file; 
-            
-        // }
-        // foreach($files as $file)
-        // {
-        //     $val = explode(",", $file); 
-        //     $values[] = str_replace (array('[','"', ']'), '' , $val);    
-        // }
-        // $path = asset('files/').'/';
-
+      
+        $MergeArray = array_merge($data,$values);
+  
         return response()->json([
-            'data' =>$data,
-            'videos' => $video,
-            'files' => $value,
             'status' => 200,
+            'data' => $MergeArray
         ]);
     }
 }

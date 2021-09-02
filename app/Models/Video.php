@@ -10,7 +10,7 @@ class Video extends Model
     use HasFactory;
     protected $table = 'videos';
     protected $fillable = [
-        'title', 'description', 'video', 'file'
+        'title', 'description', 'video', 'file', 'video_path', 'file_path'
     ];
 
     public function setFileAttribute($value)

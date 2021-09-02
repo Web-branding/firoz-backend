@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{$vd->title}}</td>
                                 <td>{{$vd->description}}</td>
-                                <td><iframe height="200"  width="200" src="{{asset('public/videos')}}/{{$vd->video}}"></iframe></td>
+                                <td><iframe height="200"  width="200" src="{{asset('videos')}}/{{$vd->video}}"></iframe></td>
                                 <td>
                                 @php 
                                     $files = $vd->file;
