@@ -203,43 +203,79 @@ class ApiController extends Controller
         }
     }
 
-    public function search(Request $request) {
-        $id = $request->application_id;
+    public function search($id) {
         $app = Application::where('application_id', $id)->get();
         $ed_id = Education::where('application_id', $id)->get();
         $m_id = Marriage::where('application_id', $id)->get();
         $trt_id = Treatment::where('application_id', $id)->get();
         $ho_id = House::where('application_id', $id)->get();
 
+        foreach($app as $ap)
+        {
+            $application[] = $ap;
+        }
+
+        // $resultArray[] = $app;
+        // $result[] = $ed_id;
+        // $res = array_merge((array)$resultArray, (array)$result);
+
+        // foreach($app as $ap)
+        // {
+        //     $application[] = $ap;
+        // }
+        // foreach($ed_id as $ap)
+        // {
+        //     $b[] = $ap;
+        // }
+        // $MergeArr = array_merge($a,$b);
+
+        
+
         if(!$ed_id->isEmpty()) {
+            foreach($ed_id as $ed)
+            {
+                $education[] = $ed;
+            }
+            $MergeArray = array_merge($application,$education);
             return response()->json([
                 'status' => 200,
-                'data' => $app,
-                'result' => $ed_id
+                'data' => $MergeArray,
             ]);
         }
         else if(!$m_id->isEmpty()) {
+            foreach($m_id as $m)
+            {
+                $marriage[] = $m;
+            }
+            $MergeArray = array_merge($application,$marriage);
             return response()->json([
                 'status' => 200,
-                'data' => $app,
-                'result' => $m_id
+                'data' => $MergeArray,
             ]);
         }
         else if(!$trt_id->isEmpty()) {
+            foreach($trt_id as $trt)
+            {
+                $treatment[] = $trt;
+            }
+            $MergeArray = array_merge($application,$treatment);
             return response()->json([
                 'status' => 200,
-                'data' => $app,
-                'result' => $trt_id
+                'data' => $MergeArray,
             ]);
         }
         else if(!$ho_id->isEmpty()) {
+            foreach($ho_id as $ho)
+            {
+                $housing[] = $ho;
+            }
+            $MergeArray = array_merge($application,$housing);
             return response()->json([
                 'status' => 200,
-                'data' => $app,
-                'result' => $ho_id
+                'data' => $MergeArray,
             ]);
         }
-        // return response()->json(['message' => 'Applicant Not Found', 404]);
+      
         return response()->json([
             'status' => 404,
             'message' => 'Applicant Not Found'
