@@ -102,7 +102,7 @@ class ApplicationController extends Controller
             'description' => 'required',
             'file' => 'required',
         ]); 
-        $filename = $request->file('file')->getClientOriginalName();
+        $filename = time().'.'.$request->file('file')->getClientOriginalName();
         $request->file('file')->move(public_path('slides'), $filename);  
 
         $data=new Slide();
@@ -193,14 +193,14 @@ class ApplicationController extends Controller
         {
            foreach($request->file('file') as $file)
            {
-               $name = $file->getClientOriginalName();
+               $name = time().'.'.$file->getClientOriginalName();
                $file->move(public_path('files'), $name);  
                $files[] = $name;  
                $files_path[] = asset('files/' . $name);
            }
         }
         
-        $filename = $request->file('video')->getClientOriginalName();
+        $filename = time().'.'.$request->file('video')->getClientOriginalName();
         $request->file('video')->move(public_path('videos'), $filename);  
 
         $data=new Video();

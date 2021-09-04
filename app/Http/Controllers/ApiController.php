@@ -35,11 +35,11 @@ class ApiController extends Controller
         ]); 
 
         $image = $request->file('image');
-        $imagename = $image->getClientOriginalName();
+        $imagename = time().'.'.$image->getClientOriginalName();
         $image->move(public_path('images'), $imagename); 
 
         $file = $request->file('file');
-        $filename=$file->getClientOriginalName();
+        $filename = time().'.'.$file->getClientOriginalName();
         $file->move(public_path('files'), $filename);  
         
         $application_id = Helper::IDGenerator(new Application, 'application_id', 5, 'ID');
@@ -117,7 +117,7 @@ class ApiController extends Controller
             ]); 
     
             $file = $request->file('mfile');
-            $filename=$file->getClientOriginalName();
+            $filename=time().'.'.$file->getClientOriginalName();
             $file->move(public_path('files'), $filename); 
      
             $data=new Marriage();
@@ -150,7 +150,7 @@ class ApiController extends Controller
              {
                 foreach($request->file('tfile') as $file)
                 {
-                    $name = $file->getClientOriginalName();
+                    $name = time().'.'.$file->getClientOriginalName();
                     $file->move(public_path('files'), $name);  
                     $files[] = $name;  
                 }
