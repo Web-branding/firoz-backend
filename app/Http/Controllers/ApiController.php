@@ -100,6 +100,7 @@ class ApiController extends Controller
                 return response()->json([
                     'status' => 200,
                     'message' => "Data has been saved",
+                    'id' => $application_id
                 ]);
             }
             else {
@@ -128,6 +129,7 @@ class ApiController extends Controller
                 return response()->json([
                     'status' => 200,
                     'message' => "Data has been saved",
+                    'id' => $application_id
                 ]);
             }
             else {
@@ -164,6 +166,7 @@ class ApiController extends Controller
                 return response()->json([
                     'status' => 200,
                     'message' => "Data has been saved",
+                    'id' => $application_id
                 ]);
             }
             else {
@@ -192,6 +195,7 @@ class ApiController extends Controller
                 return response()->json([
                     'status' => 200,
                     'message' => "Data has been saved",
+                    'id' => $application_id
                 ]);
             }
             else {
