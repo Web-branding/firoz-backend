@@ -55,7 +55,7 @@ class ApiController extends Controller
         $data->ration=$request->ration;
         $data->amount=$request->amount;
         $data->priority=$request->priority;
-        $data->image=$imagename;
+        $data->image=asset('images/'.$imagename);
         $data->file = $filename;
         $data->category=$request->category;
         $results = $data->save();
