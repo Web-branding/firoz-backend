@@ -304,16 +304,16 @@ class ApiController extends Controller
     {
         $data = Video::get()->all();
     
-        foreach($data as $file)
-        {
-            $values[] = explode(',', $file->file_path);
-        }
+        // foreach($data as $file)
+        // {
+        //     $values[] = explode(',', $file->file_path);
+        // }
       
-        $MergeArray = array_merge($data,$values);
+        // $MergeArray = array_merge($data,$values);
   
         return response()->json([
             'status' => 200,
-            'data' => $MergeArray
+            'data' => $data
         ]);
     }
 }
